@@ -1,0 +1,157 @@
+<section class="sec-2">
+  <div class="row">
+    <div class="col-2">
+      <div class="group">
+        <div class="box">
+          <div class="container">
+            <h3 class="subhead">Happy To meet You again</h3>
+            <p class="subpara">we are very happy to see that you are always with
+              us.</p>
+          </div>
+        </div></div>
+    </div>
+    <div class="col-2">
+      <div class="group">
+        <div class="box">
+          <div class="card">
+            <form action="/login" method="POST">
+              <input
+                name="mob"
+                type="text"
+                placeholder="Enter Your Mobile"
+                autocomplete="off"
+              />
+              <input
+                type="password"
+                name="pass"
+                id="l-pass"
+                placeholder="Enter Your Password"
+              />
+              <i class="far fa-eye-slash eye-password"></i>
+              <button
+                class="btn btn-primary btn-primary-costom"
+                type="submit"
+              >Log In</button>
+            </form>
+            <a class="forget" href="forget-password">Forget Password</a>
+            <div class="hr-1"></div>
+            <button id="signup" class="btn btn-success text-white">Create New
+              Acoount</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sec-3">
+  <div class="card-signup">
+    <h3 class="subhead">Sign Up</h3>
+    <div class="exit-symbol">
+      <i class="fas fa-times"></i>
+    </div>
+    <form class="signup-form">
+      {{! <form action="/signup" method="post"> }}
+      <div class="input-group">
+        <input
+          autocomplete="off"
+          required
+          class="sf-name"
+          name="name"
+          type="text"
+          placeholder="Enter Your Name"
+          minlength="5"
+        />
+      </div>
+      <div class="input-group">
+        <input
+          autocomplete="off"
+          required
+          class="sf-mobile"
+          name="mob"
+          type="tel"
+          placeholder="Enter Your Mobile"
+          minlength="10"
+          maxlength="10"
+        />
+
+      </div>
+      <div class="input-group">
+        <input
+          autocomplete="off"
+          required
+          class="sf-email"
+          name="email"
+          type="email"
+          placeholder="Enter Your Email"
+        />
+
+      </div>
+      <div class="input-group">
+        <input
+          autocomplete="off"
+          required
+          class="sf-password"
+          name="pass"
+          id="l-pass"
+          type="password"
+          placeholder="Enter Your Password"
+        />
+        {{! <i class="far fa-eye-slash eye-password"></i> }}
+
+      </div>
+      {{!-- <div class="input-group">
+        <select class="sf-job" name="job">
+          <option value="">Select One Job</option>
+          <option value="electrician">Electrician</option>
+          <option value="plumber">Plubmber</option>
+          <option value="driver">Driver</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <div class="input-group">
+          <select class="sf-location" name="location">
+            <option value="">Select One Location</option>
+            <option value="Kelakam">Kelakam</option>
+            <option value="Manathana">Manathana</option>
+            <option value="Peravoor">Peravoor</option>
+          </select>
+        </div>
+      </div> --}}
+      <div class="input-group">
+        <select class="sf-question" name="ques">
+          <option value="">Select a security Question</option>
+          <option value="q1">Q1</option>
+          <option value="q2">Q2</option>
+          <option value="q3">Q3</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <input
+          autocomplete="off"
+          required
+          class="sf-answer"
+          name="ans"
+          type="text"
+          placeholder="Answer for Security Question"
+        />
+      </div>
+      <div class="term_condition">
+
+        <p class="terms">By clicking Sign Up, you agree to our
+          <a href="terms" class="terms-conditions">Terms</a>
+          and
+          <a href="policy" class="terms-conditions">Cookie Policy</a>.
+          <br />
+        </p>
+      </div>
+      {{! <button type="submit" class="btn btn-primary btn-primary-costom">
+        Sign Up</button> }}
+      <button
+        id="signup-btn"
+        type="submit"
+        class="btn btn-primary btn-primary-costom primary mail-btn"
+      >
+        <span class="btn-text">Sign Up</span></button>
+    </form>
+  </div>
+</section>

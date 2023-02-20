@@ -1,0 +1,120 @@
+<section class="sec-2">
+  <div class="container-1">
+    <div class="sub-container">
+      <h4 class="subhead">Find Your Employee</h4>
+      <div class="search">
+        <form action="search" method="get">
+          <select class="input-s" name="job" required>
+            <option value="">Select One Job</option>
+            <option value="electrician">Electrician</option>
+            <option value="plumber">Plubmber</option>
+            <option value="driver">Driver</option>
+          </select>
+          <select class="input-s" name="place" required>
+            <option value="">Select One Location</option>
+            <option value="Kelakam">Kelakam</option>
+            <option value="Manathana">Manathana</option>
+            <option value="Peravoor">Peravoor</option>
+          </select>
+
+          <button class="btn-1 input-s" type="submit">
+            <i class="fas fa-search"></i></button>
+        </form>
+      </div>
+      <div class="hr-1"></div>
+        {{#if results.status}}
+            {{#if results.result}}
+            <div class="result">
+            {{#each results.emp}}
+          <div class="pro-card">
+            <div class="pro-image">
+              {{#if this.image}}
+                    <img
+                      src="/images/user-images/{{this._id}}.jpg"
+                      class="p-1"
+                      width="110"
+                    />
+                  {{else}}
+                    <img
+                      src="/images/avathar.png"
+                      class="p-1 rounded-circle"
+                      width="110"
+                    />
+                  {{/if}}
+            </div>
+            
+            <div class="detail">
+              <div class="details">
+                <p class="title">Name : </p><h5 class="name text-Cap">{{this.name}}</h5>
+              </div><div class="details">
+                <p class="title">Job : </p><h5 class="job text-Cap">{{this.job}}</h5>
+              </div>
+              <div class="details">
+                <p class="title">Place : </p><h5 class="place text-Cap">{{this.location}}</h5>
+              </div>
+              <div class="details">
+                <p class="title">Mobile : </p><a
+                    id="mob-click"
+                  href="tel:+91{{this.mobile}}"
+                  class="number"
+                >{{this.mobile}}</a>
+              </div>
+            </div>
+          </div>
+
+            {{/each}}
+            </div>
+            {{else}}
+            <div class="s-box">
+            <h2 class="subpara text-muted">Unable to find workers at your Place.</h2>
+            </div>
+            <div class="hr-1"></div>
+            <div class="result">
+              {{#each results.emp}}
+              <div class="pro-card">
+                <div class="pro-image">
+              {{#if this.image}}
+                    <img
+                      src="/images/user-images/{{this._id}}.jpg"
+                      class="p-1"
+                      width="110"
+                    />
+                  {{else}}
+                    <img
+                      src="/images/avathar.png"
+                      class="p-1 rounded-circle"
+                      width="110"
+                    />
+                  {{/if}}
+            </div>
+                <div class="detail">
+                  <div class="details">
+                    <p class="title">Name : </p><h5 class="name text-Cap">{{this.name}}</h5>
+                  </div><div class="details">
+                    <p class="title">Job : </p><h5 class="job text-Cap">{{this.job}}</h5>
+                  </div>
+                  <div class="details">
+                    <p class="title">Place : </p><h5 class="place text-Cap">{{this.location}}</h5>
+                  </div>
+                  <div class="details">
+                    <p class="title">Mobile : </p><a
+                    id="mob-click"
+                      href="tel:+91{{this.mobile}}"
+                      class="number"
+                    >{{this.mobile}}</a>
+                  </div>
+                </div>
+              </div>
+              {{/each}}
+            </div>
+            {{/if}}
+        {{else}}
+            <div class="s-box">
+            <h2 class="subpara">Unable to find workers from our site.</h2>
+            </div>
+            <div class="hr-1"></div>
+        {{/if}}
+      
+
+  </div>
+</section>

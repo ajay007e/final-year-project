@@ -1,0 +1,115 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"
+  />
+</head>
+<section class="sec">
+
+  <div class="container">
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light m-3 px-4 fixed-top"
+    ><div class="container-fluid">
+
+        <a class="navbar-brand" href="#">Title</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto pr-5 mr-5">
+
+            <li class="nav-item mr-3">
+              <span
+                id="searchCount"
+                class="ml-3 m-1 p-2 badge badge-info"
+              >{{searchCount}}
+                Searches</span>
+              <span
+                id="clickCount"
+                class="ml-3 m1 p-2 badge badge-success"
+              >{{clickCount}}
+                Calls</span>
+              <a class="btn ml-5" href="/__admin/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container-2">
+      <div class="admin-panel">
+        <div class="table-responsive">
+          <table id="example" class="table table-border text-center text-Cap">
+            <thead>
+              <tr>
+                <th class="">Name</th>
+                <th class="">Job</th>
+                <th class="">Location</th>
+                <th class="">Status</th>
+                <th class="">Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each users}}
+                <tr>
+                  <td>{{this.name}}</td>
+                  <td>{{this.job}}</td>
+                  <td>{{this.location}}</td>
+                  <td>{{this.status}}</td>
+
+                  <td>
+                    {{!-- <div class="dropdown">
+                      <button
+                        class="btn btn-sm btn-info btn-secondary dropdown-toggle"
+                        type="button"
+                        id="dropdownMenuButton"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        View
+                      </button>
+                      <div
+                        class="dropdown-menu"
+                        aria-labelledby="dropdownMenuButton"
+                      >
+                        <a
+                          class="dropdown-item"
+                          href="/__admin/profile/{{this._id}}"
+                        >Profile</a>
+                        {{#if this.verified}}
+                          <a
+                            class="dropdown-item"
+                            href="/__admin/suspend/{{this._id}}"
+                          >Suspend</a>
+                        {{else}}
+                        {{/if}}
+                      </div>
+                    </div> --}}
+                    <a
+                      class="btn btn-info"
+                      href="/__admin/profile/{{this._id}}"
+                    >View Profile</a>
+                  </td>
+                </tr>
+              {{/each}}
+
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
