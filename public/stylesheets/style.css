@@ -215,7 +215,13 @@ select {
 }
 #feedback{
   padding: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* height: 20%; */
+  /* display: none; */
 }
+
 .box {
   display: flex;
   align-items: center;
@@ -373,6 +379,7 @@ svg {
 
 .input-doc {
   width: 80%;
+  height: 47%;
   border-radius: 5px;
   padding: 4rem;
   margin: 6px auto;

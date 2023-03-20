@@ -12,6 +12,7 @@ const homeBtn = document.querySelector(".sec-2");
 const fileUpload = document.getElementById("upload-button");
 const feedback = document.getElementById("feedback");
 const progress = document.getElementById("progress");
+const queBtn = document.getElementById("question-input");
 
 /* Signup btn*/
 const createAcountBtn = document.getElementById("signup");
@@ -82,6 +83,25 @@ const viewPassword = () => {
 
 /* Forms -- action*/
 
+queBtn?.addEventListener("submit", (e) => {
+  e.preventDefault();
+  // console.log("clicked");
+  let data = document.getElementById("question-data");
+  let formData = {
+    question: data.value,
+  };
+  // console.log(formData);
+  $.ajax({
+    url: "/question",
+    method: "post",
+    data: formData,
+    success: (response) => {
+      // console.log(response);
+      if (response.status) {
+      } 
+    },
+  });
+});
 resetBtn?.addEventListener("submit", (e) => {
   e.preventDefault();
   // console.log("clicked");
@@ -354,8 +374,9 @@ exitImage?.addEventListener("click", () => {
 /* Home-Page btn -- action */
 homeBtn?.addEventListener("click", function (e) {
   if (e.x > 30 && e.x < 85 && e.y > 20 && e.y < 85) {
-    console.log(e.x, e.y);
+    // console.log(e.x, e.y);
     window.location = "/";
+    // history.back();
   }
 });
 
@@ -399,10 +420,8 @@ fileUpload?.addEventListener("change", (e) => {
           progress.classList.add("hide");
           progress.style.visibility = "hidden";
         }
-        let msg = `<span>${file.name.substring(
-          0,
-          35
-        )}... uploaded successfully.</span>`;
+        let newLine = '\n';
+        let msg = `<span>${file.name} uploaded successfully.</span>`;
         feedback.innerHTML = msg;
         console.log(file.name);
       }

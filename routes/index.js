@@ -31,6 +31,11 @@ router.get("/", (req, res) => {
   });
 });
 
+router.post("/question", (req, res) => {
+    console.log(req.body);
+
+});
+
 /* Signup Page - post */
 
 router.post("/signup", (req, res) => {
@@ -61,22 +66,22 @@ router.post("/signup", (req, res) => {
       };
       userHelper.doSignup(userData, req.headers.host).then((response) => {
         // console.log(response);
-        if (response.status) {
-          // req.session.loggedIn = true;
-          req.session.user = response.user;
-          req.session.flash = {
-            type: "success",
-            title: "Mail Sent",
-            message:
-              "Verifiction mail sent to your mail, kindly verify using the mail.",
-          };
-        } else {
-          req.session.flash = {
-            type: "info",
-            title: "Error",
-            message: "Some Error occured, try after sometimes.",
-          };
-        }
+        // if (response.status) {
+        //   // req.session.loggedIn = true;
+        //   req.session.user = response.user;
+        //   req.session.flash = {
+        //     type: "success",
+        //     title: "Mail Sent",
+        //     message:
+        //       "Verifiction mail sent to your mail, kindly verify using the mail.",
+        //   };
+        // } else {
+        //   req.session.flash = {
+        //     type: "info",
+        //     title: "Error",
+        //     message: "Some Error occured, try after sometimes.",
+        //   };
+        // }
         res.json(response);
       });
     }
@@ -140,50 +145,50 @@ router.get("/change-password", verifyLogin, (req, res) => {
     title: "Change Password",
   });
 });
-router.get("/verify-account", (req, res) => {
-  // console.log(req.query.token);
-  userHelper.verifyAccount(req.query.token).then((response) => {
-    // console.log(response);
-    if (response.status) {
-      req.session.flash = {
-        type: "success",
-        title: "Account Verified",
-        message: "Successfully verified, please login",
-      };
-      res.redirect("/profile");
-    } else {
-      req.session.flash = {
-        type: "info",
-        title: "Error",
-        message: "Some Error occured, try after sometimes.",
-      };
-      res.redirect("/");
-    }
-  });
-});
-router.get("/verify-profile", verifyLogin, (req, res) => {
-  // console.log(req.session.user);
-  userHelper
-    .verifyProfile(req.session.user._id, req.headers.host)
-    .then((response) => {
-      // console.log(response);
-      if (response.sentMail) {
-        req.session.flash = {
-          type: "success",
-          title: "Mail Sent",
-          message:
-            "Verifiction mail sent to your mail, kindly verify using the mail.",
-        };
-      } else {
-        req.session.flash = {
-          type: "info",
-          title: "Error",
-          message: "Some Error occured, try after sometimes.",
-        };
-      }
-      res.json(response);
-    });
-});
+// router.get("/verify-account", (req, res) => {
+//   // console.log(req.query.token);
+//   userHelper.verifyAccount(req.query.token).then((response) => {
+//     // console.log(response);
+//     if (response.status) {
+//       req.session.flash = {
+//         type: "success",
+//         title: "Account Verified",
+//         message: "Successfully verified, please login",
+//       };
+//       res.redirect("/profile");
+//     } else {
+//       req.session.flash = {
+//         type: "info",
+//         title: "Error",
+//         message: "Some Error occured, try after sometimes.",
+//       };
+//       res.redirect("/");
+//     }
+//   });
+// });
+// router.get("/verify-profile", verifyLogin, (req, res) => {
+//   // console.log(req.session.user);
+//   userHelper
+//     .verifyProfile(req.session.user._id, req.headers.host)
+//     .then((response) => {
+//       // console.log(response);
+//       if (response.sentMail) {
+//         req.session.flash = {
+//           type: "success",
+//           title: "Mail Sent",
+//           message:
+//             "Verifiction mail sent to your mail, kindly verify using the mail.",
+//         };
+//       } else {
+//         req.session.flash = {
+//           type: "info",
+//           title: "Error",
+//           message: "Some Error occured, try after sometimes.",
+//         };
+//       }
+//       res.json(response);
+//     });
+// });
 router.post("/edit-profile", verifyLogin, (req, res) => {
   // console.log(req.body, req.session.user)
   userHelper.editProfile(req.session.user._id, req.body).then((response) => {
@@ -258,49 +263,49 @@ router.post("/change-question", verifyLogin, (req, res) => {
   }
 });
 
-router.post("/edit-image/:id", (req, res) => {
-  // fs.stat(
-  //   "public/images/user-images/" + req.params.id + ".jpg",
-  //   async (err, stat) => {
-  //     // console.log(err, stat);
-  //     if (err === null) {
-  //       fs.unlink(
-  //         "./public/images/user-images/" + req.params.id + ".jpg",
-  //         (err) => {
-  //           if (err) console.log(err);
-  //         }
-  //       );
-  //     }
-  //   }
-  // );
+// router.post("/edit-image/:id", (req, res) => {
+//   // fs.stat(
+//   //   "public/images/user-images/" + req.params.id + ".jpg",
+//   //   async (err, stat) => {
+//   //     // console.log(err, stat);
+//   //     if (err === null) {
+//   //       fs.unlink(
+//   //         "./public/images/user-images/" + req.params.id + ".jpg",
+//   //         (err) => {
+//   //           if (err) console.log(err);
+//   //         }
+//   //       );
+//   //     }
+//   //   }
+//   // );
 
-  let image = req.files.image;
-  image.mv("public/images/user-images/" + req.params.id + ".jpg");
-  userHelper.editImage(req.params.id).then(() => {});
+//   let image = req.files.image;
+//   image.mv("public/images/user-images/" + req.params.id + ".jpg");
+//   userHelper.editImage(req.params.id).then(() => {});
 
-  // .then(async () => {
-  // await imageHelper.resizeImage(req.params.id).then((response) => {
-  //   // console.log(response);
-  //   if (response.status) {
-  //   } else {
-  //   }
-  // });
-  // });
+//   // .then(async () => {
+//   // await imageHelper.resizeImage(req.params.id).then((response) => {
+//   //   // console.log(response);
+//   //   if (response.status) {
+//   //   } else {
+//   //   }
+//   // });
+//   // });
 
-  res.redirect("/profile");
-});
+//   res.redirect("/profile");
+// });
 
-router.get("/remove-image/:id", (req, res) => {
-  userHelper.removeImage(req.params.id).then(() => {
-    res.redirect("/profile");
-    fs.unlink(
-      "./public/images/user-images/" + req.params.id + ".jpg",
-      (err) => {
-        if (err) console.log(err);
-      }
-    );
-  });
-});
+// router.get("/remove-image/:id", (req, res) => {
+//   userHelper.removeImage(req.params.id).then(() => {
+//     res.redirect("/profile");
+//     fs.unlink(
+//       "./public/images/user-images/" + req.params.id + ".jpg",
+//       (err) => {
+//         if (err) console.log(err);
+//       }
+//     );
+//   });
+// });
 
 /* Contact Page */
 

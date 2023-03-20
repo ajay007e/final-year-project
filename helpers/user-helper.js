@@ -44,54 +44,56 @@ module.exports = {
             .collection(collection.USER_COLLECTION)
             .findOne({ _id: data.insertedId });
           response.status = true;
-          const transporter = nodemailer.createTransport({
-            service: "gmail",
-            auth: {
-              user: credential.EMAIL,
-              pass: credential.PASSWORD,
-            },
-          });
-          transporter.use(
-            "compile",
-            hbs({
-              viewEngine: {
-                extname: ".hbs", // handlebars extension
-                layoutsDir: "views/email/", // location of handlebars templates
-                defaultLayout: "verification", // name of main template
-              },
-              // viewPath: "views",
-              viewPath: "views/email",
-              extName: ".hbs",
-            })
-          );
+          // const transporter = nodemailer.createTransport({
+          //   service: "gmail",
+          //   auth: {
+          //     user: credential.EMAIL,
+          //     pass: credential.PASSWORD,
+          //   },
+          // });
+          // transporter.use(
+          //   "compile",
+          //   hbs({
+          //     viewEngine: {
+          //       extname: ".hbs", // handlebars extension
+          //       layoutsDir: "views/email/", // location of handlebars templates
+          //       defaultLayout: "verification", // name of main template
+          //     },
+          //     // viewPath: "views",
+          //     viewPath: "views/email",
+          //     extName: ".hbs",
+          //   })
+          // );
 
           //           let msg = `Hai, thanks for registering in our website.
           // please verify your account using the link : http://${domain}/verify-account?token=${response.user.emailToken}`;
 
-          const mailOption = {
-            to: response.user.email,
-            from: "ajay010e@gmail.com",
-            subject: "Verify Your Account",
-            template: "verification",
-            context: {
-              name: response.user.name,
-              link: `http://${domain}/verify-account?token=${response.user.emailToken}`,
-            },
-          };
-
-          transporter.sendMail(mailOption, (err, data) => {
-            if (err) {
-              console.log(err);
-              response.sentMail = false;
-              response.error = err;
-              resolve(response);
-            } else {
-              // console.log("Email Sent.");
-              response.sentMail = true;
-              response.details = data;
-              resolve(response);
-            }
-          });
+          // const mailOption = {
+          //   to: response.user.email,
+          //   from: "ajay010e@gmail.com",
+          //   subject: "Verify Your Account",
+          //   template: "verification",
+          //   context: {
+          //     name: response.user.name,
+          //     link: `http://${domain}/verify-account?token=${response.user.emailToken}`,
+          //   },
+          // };
+          response.sentMail = "pending";
+              // response.details = data;
+          resolve(response);
+          // transporter.sendMail(mailOption, (err, data) => {
+          //   if (err) {
+          //     console.log(err);
+          //     response.sentMail = false;
+          //     response.error = err;
+          //     resolve(response);
+          //   } else {
+          //     // console.log("Email Sent.");
+          //     response.sentMail = true;
+          //     response.details = data;
+          //     resolve(response);
+          //   }
+          // });
           // --------------------------------
           // resolve(response);
         });

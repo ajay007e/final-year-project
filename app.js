@@ -55,8 +55,8 @@ app.use((req, res, next) => {
 });
 app.use(fileUpload());
 db.connect((err) => {
-  if (err) console.log("Connection Error");
-  // console.log("Database Connected");
+  if (err) console.log("Connection Error"+err);
+  console.log("Database Connected");
 });
 //------------------
 

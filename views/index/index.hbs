@@ -387,19 +387,19 @@
     <div class="col-2">
       <div class="pt-10">
         <div class="subpara">Find Your Answers</div>
-        <div class="question">
+        <form id="question-input" class="question">
           <textarea
             class=""
             name="question"
-            id=""
+            id="question-data"
             cols="30"
             rows="10"
           ></textarea>
           <br />
           <div class="pt-4">
-            <a href="#" class="btn-1">Find</a>
+            <button type="submit" id="question-btn" class="btn-1">Find</button>
           </div>
-        </div>
+        </form>
 
       </div>
     </div>
@@ -410,7 +410,7 @@
           <div class="input-doc drag-active">
             <input type="file" name="doc" id="upload-button">
             <label class="btn-sec-custom" for="upload-button">  <i class="fa fa-upload" aria-hidden="true"></i>  Upload Document</label>
-            <div class="" id="feedback"></div>
+            <div class="" id="feedback">‎</div>
             <label class="hide" id="progress-label" for="progress"></label>
             <br>
             <progress class="hide" id="progress" value="0" max="100"></progress>
